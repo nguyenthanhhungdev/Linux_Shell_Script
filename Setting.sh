@@ -18,4 +18,6 @@ sudo dnf install kernel-tools
 #Installing Perf
 sudo dnf install perf
 #Installing Dolphin
+#Open dolphin with terminal: dolphin
 sudo dnf install dolphin
+
