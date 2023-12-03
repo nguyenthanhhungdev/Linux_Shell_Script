@@ -20,4 +20,8 @@ sudo dnf install perf
 #Installing Dolphin
 #Open dolphin with terminal: dolphin
 sudo dnf install dolphin
+#Installing RCLone
+#https://rclone.org/downloads/
+#Installing RCLone Brower
+sudo dnf install rclone-browser
 
