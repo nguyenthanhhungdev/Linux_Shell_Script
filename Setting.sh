@@ -17,3 +17,5 @@ sudo dnf install ibus-bamboo
 sudo dnf install kernel-tools
 #Installing Perf
 sudo dnf install perf
+#Installing Dolphin
+sudo dnf install dolphin
