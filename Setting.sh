@@ -24,4 +24,14 @@ sudo dnf install dolphin
 #https://rclone.org/downloads/
 #Installing RCLone Brower
 sudo dnf install rclone-browser
-
+#Install tweak
+sudo dnf install gnome-tweaks
+#Install gnome-extension
+sudo dnf install gnome-shell-extensions
+#Install Blur my shell, Vitals, Task Widget, Dash to dock, coverflow alt-tab, rounded conner, User Themes
+#Firmware update
+sudo fwupdmgr refresh --force
+sudo fwupdmgr get-updates
+sudo fwupdmgr update
+#Enable RPM Fusition
+sudo dnf install \https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
