@@ -11,6 +11,7 @@ sudo dnf install community-mysql-server
 #Installing nano
 sudo dnf install nano
 #Installing Bamboo
+#https://software.opensuse.org//download.html?project=home%3Alamlng&package=ibus-bamboo
 sudo dnf config-manager --add-repo https://download.opensuse.org/repositories/home:lamlng/Fedora_39/home:lamlng.repo
 sudo dnf install ibus-bamboo
 #Installing CPUPower
@@ -28,7 +29,7 @@ sudo dnf install rclone-browser
 sudo dnf install gnome-tweaks
 #Install gnome-extension
 sudo dnf install gnome-shell-extensions
-#Install Blur my shell, Vitals, Task Widget, Dash to dock, coverflow alt-tab, rounded conner, User Themes
+#Install Blur my shell, Vitals, Task Widget, Dash to dock, coverflow alt-tab, rounded conner, User Themes, transparent-window-moving
 #Firmware update
 sudo fwupdmgr refresh --force
 sudo fwupdmgr get-updates
