@@ -8,6 +8,8 @@ sudo dnf install git
 sudo dnf install java-latest-openjdk.x86_64
 #Installing Mysql
 sudo dnf install community-mysql-server
+#Installing httpd to control localhost
+sudo dnf install httpd
 #Installing nano
 sudo dnf install nano
 #Installing Bamboo
@@ -18,9 +20,6 @@ sudo dnf install ibus-bamboo
 sudo dnf install kernel-tools
 #Installing Perf
 sudo dnf install perf
-#Installing Dolphin
-#Open dolphin with terminal: dolphin
-sudo dnf install dolphin
 #Installing RCLone
 #https://rclone.org/downloads/
 #Installing RCLone Brower
@@ -30,9 +29,15 @@ sudo dnf install gnome-tweaks
 #Install gnome-extension
 sudo dnf install gnome-shell-extensions
 #Install Blur my shell, Vitals, Task Widget, Dash to dock, coverflow alt-tab, rounded conner, User Themes, transparent-window-moving
+#Install Bottles, caprine, Mousai, timeshift
 #Firmware update
 sudo fwupdmgr refresh --force
 sudo fwupdmgr get-updates
 sudo fwupdmgr update
 #Enable RPM Fusition
 sudo dnf install \https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+#Install 1.1.1.1
+#Add repo
+sudo curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | sudo tee /etc/yum.repos.d/cloudflare-warp.repo
+#Install
+sudo dnf install cloudflare-warp
