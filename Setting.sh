@@ -1,4 +1,9 @@
 #!/bin/bash
+
+sudo dnf clean all
+sudo dnf update
+sudo dnf upgrade
+
 #Install Vitals (Wacthing detail of system)
 sudo dnf install libgtop2-devel lm_sensors
 #https://aur.archlinux.org/gnome-shell-extension-vitals-git.git
@@ -13,7 +18,7 @@ sudo dnf install java-latest-openjdk.x86_64
 sudo dnf install community-mysql-server
 
 #Installing MongoDB
-#sudo nano /etc/yum.repos.d/mongodb-org-6.0.repo
+#sudo nano /etc/yum.repos.d/mongodb-org-x.x.repo
 #[mongodb-org-x.x] trên trang install mongo db
 #name=MongoDB Repository
 #baseurl=https://repo.mongodb.org/yum/redhat/9/mongodb-org/6.0/x86_64/
@@ -45,10 +50,11 @@ sudo dnf install rclone-browser
 
 #Install tweak
 sudo dnf install gnome-tweaks
+#Custom theme: https://youtu.be/viffvWtMTdo?si=bUcnHMwU9D_1bH2o
 #Install gnome-extension
 sudo dnf install gnome-shell-extensions
 #Install Blur my shell, Vitals, Task Widget, Dash to dock, coverflow alt-tab, rounded conner, User Themes, transparent-window-moving, CipBoard indicator
-#Install Bottles, caprine, timeshift
+#Install Bottles, caprine, timeshift, devdocs, format lab, dev toolbox
 
 #Installing Caprine
 sudo dnf copr enable dusansimic/caprine
@@ -60,7 +66,8 @@ sudo fwupdmgr refresh --force
 sudo fwupdmgr get-updates
 sudo fwupdmgr update
 #Enable RPM Fusition
-sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf groupupdate core
 #Install 1.1.1.1
 #Add repo
 sudo curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | sudo tee /etc/yum.repos.d/cloudflare-warp.repo
