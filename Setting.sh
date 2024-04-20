@@ -52,8 +52,10 @@ sudo dnf install rclone-browser
 sudo dnf install gnome-tweaks
 #Custom theme: https://youtu.be/viffvWtMTdo?si=bUcnHMwU9D_1bH2o
 #Install gnome-extension
-sudo dnf install gnome-shell-extensions
-#Install Blur my shell, Vitals, Task Widget, Dash to dock, coverflow alt-tab, rounded conner, User Themes, transparent-window-moving, CipBoard indicator
+sudo apt install snapd
+sudo ln -s /var/lib/snapd/snap /snap
+sudo snap install gnome-extension-manager
+#Install Blur my shell, Vitals, Dash to dock, coverflow alt-tab, rounded conner, User Themes, transparent-window-moving, CipBoard indicator
 #Install Bottles, caprine, timeshift, devdocs, format lab, dev toolbox
 
 #Installing Caprine
@@ -83,3 +85,6 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
                                                            #rm -rf ~/.npm
                                                            #rm -rf ~/.bower
 #Sau đó cài bằng curl
+
+#Installing Grub custom
+sudo dnf install grub-customizer
