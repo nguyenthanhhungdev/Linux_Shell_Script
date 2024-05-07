@@ -35,4 +35,35 @@ updateSystem() {
   sudo fwupdmgr update
 }
 
+function install_extensions {
+    # List of extension UUIDs to install
+    EXTENSION_UUIDS=(
+        "dash-to-dock@micxgx.gmail.com"
+        "quick-settings-tweaks@qwreey"
+        "transparent-window-moving@noobsai.github.com"
+        "compiz-windows-effect@hermes83.github.com"
+        "compiz-alike-magic-lamp-effect@hermes83.github.com"
+        "Vitals@CoreCoding.com"
+        "Rounded_Corners@lennart-k"
+        "apps-menu@gnome-shell-extensions.gcampax.github.com"
+        "background-logo@fedorahosted.org"
+        "launch-new-instance@gnome-shell-extensions.gcampax.github.com"
+        "places-menu@gnome-shell-extensions.gcampax.github.com"
+        "window-list@gnome-shell-extensions.gcampax.github.com"
+        "appindicatorsupport@rgcjonas.gmail.com"
+        "user-theme@gnome-shell-extensions.gcampax.github.com"
+        "clipboard-indicator@tudmotu.com"
+        "blur-my-shell@aunetx"
+        "workspaces-by-open-apps@favo02.github.com"
+    )
+
+    # Loop through each UUID and install the extension
+    for UUID in "${EXTENSION_UUIDS[@]}"
+    do
+        gnome-extensions install $UUID
+    done
+}
+
+updateSystem
 install_extension_manager
+install_extensions
