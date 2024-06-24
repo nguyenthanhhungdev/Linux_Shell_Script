@@ -159,8 +159,61 @@ install_grub_customizer() {
   sudo dnf install grub-customizer
 }
 
+#Hàm install toolbox JetBrains
+install_jetbrains_toolbox() {
+	wget -c https://download.jetbrains.com/toolbox/jetbrains-toolbox-2.3.2.31487.tar.gz
+	sudo tar -xzf jetbrains-toolbox-2.3.2.31487.tar.gz -C ~/Downloads
+	if [ "$?" -eq 0 ]; then
+    gio trash jetbrains-toolbox-2.3.2.31487.tar.gz
+  else
+    echo "Có lỗi xảy ra khi giải nén JetBrains Toolbox."
+  fi
+}
 
+#Hàm install git
+install_git() {
+  sudo dnf install git
+}
 
+#Hàm install edge
+install_edge() {
+  flatpak install flathub com.microsoft.Edge
+}
+
+#Hàm install vscode
+install_vscode() {
+  flatpak install flathub com.visualstudio.code
+}
+
+#Hàm install Gaphor
+install_graphor() {
+  flatpak install flathub org.gaphor.Gaphor
+}
+
+#Hàm install Secret
+install_secret() {
+  flatpak install flathub org.gnome.World.Secrets
+}
+
+#Hàm install Warp
+install_warp() {
+  flatpak install flathub app.drey.Warp
+}
+
+#Hàm install Firmware update
+install_firmware_update() {
+  flatpak install flathub org.gnome.Firmware
+}
+
+#Hàm install Bottles
+install_bottles() {
+  flatpak install flathub com.usebottles.bottles
+}
+
+#Hàm install Impression
+install_impression() {
+  flatpak install flathub io.gitlab.adhami3310.Impression
+}
 
 updateSystem
 install_extension_manager
@@ -183,3 +236,11 @@ install_fancontrol
 install_tuned_adm
 install_warp
 install_grub_customizer
+install_jetbrains_toolbox
+install_git
+install_edge
+install_vscode
+install_graphor
+install_secret
+install_warp
+install_firmware_update
