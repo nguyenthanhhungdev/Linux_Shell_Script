@@ -1,26 +1,26 @@
 #!/bin/bash
 
 
-
-# Hàm kiểm tra sự tồn tại của snapd
-is_snapd_installed() {
-    if rpm -q snapd &> /dev/null; then
-        return 0  # snapd đã được cài đặt
-    else
-        return 1  # snapd chưa được cài đặt
-    fi
+#Hàm kiểm tra flathub đã được cài đặt chưa
+check_flathub() {
+  if flatpak remote-list | grep -q flathub; then
+    echo "Flathub đã được cài đặt."
+  else
+    echo "Flathub chưa được cài đặt."
+  fi
 }
+
 
 # Hàm cài đặt extension-manager
 install_extension_manager() {
-    if is_snapd_installed; then
-        echo "snapd đã được cài đặt, tiến hành cài đặt extension-manager."
+    if check_flathub; then
+        echo "flathub đã được cài đặt, tiến hành cài đặt extension-manager."
         # Thực hiện cài đặt extension-manager ở đây
-        sudo snap install gnome-extension-manager
+        flatpak install flathub com.mattjakeman.ExtensionManager
     else
-        echo "snapd chưa được cài đặt, thực hiện cài đặt"
-        sudo apt install snapd
-        sudo ln -s /var/lib/snapd/snap /snap
+        echo "flathub chưa được cài đặt, thực hiện cài đặt"
+        # Thực hiện cài đặt flathub ở đây
+        flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     fi
 }
 
@@ -35,7 +35,7 @@ updateSystem() {
   sudo fwupdmgr update
 }
 
-function install_extensions {
+install_extensions() {
     # List of extension UUIDs to install
     EXTENSION_UUIDS=(
         "dash-to-dock@micxgx.gmail.com"
@@ -60,10 +60,126 @@ function install_extensions {
     # Loop through each UUID and install the extension
     for UUID in "${EXTENSION_UUIDS[@]}"
     do
-        gnome-extensions install $UUID
+        gnome-extensions install "$UUID"
     done
 }
+
+#Hàm install nvm
+install_nvm() {
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+}
+
+#Hàm install nodejs
+install_nodejs() {
+  sudo dnf install nodejs
+}
+
+#Hàm install rclone
+install_rclone() {
+  sudo dnf install rclone
+}
+
+#Hàm install rclone-browser
+install_rclone_browser() {
+  sudo dnf install rclone-browser
+}
+
+#Hàm install gnome-tweaks
+install_gnome_tweaks() {
+  sudo dnf install gnome-tweaks
+}
+
+#Hàm install java
+install_java() {
+  sudo dnf install java
+}
+
+#Hàm install mongodb
+install_mongodb() {
+  sudo dnf install mongodb-org
+}
+
+#Hàm install httpd
+install_httpd() {
+  sudo dnf install httpd
+}
+
+#Hàm install mysql
+install_mysql() {
+  sudo dnf install mysql
+}
+
+#Hàm install ibus-bamboo
+install_ibus_bamboo() {
+  dnf config-manager --add-repo https://download.opensuse.org/repositories/home:lamlng/Fedora_39/home:lamlng.repo
+  dnf install ibus-bamboo
+}
+
+#Hàm install cpupower
+install_cpupower() {
+  sudo dnf install kernel-tools
+}
+
+#Hàm install perf
+install_perf() {
+  sudo dnf install perf
+}
+
+#Hàm install caprine
+install_caprine() {
+  sudo dnf copr enable dusansimic/caprine
+  sudo dnf install caprine
+}
+
+#Hàm install tuned
+install_tuned() {
+  sudo dnf install tuned
+}
+
+#Hàm install fancontrol
+install_fancontrol() {
+  sudo dnf install fancontrol
+}
+
+#Hàm install tuned-adm
+install_tuned_adm() {
+  sudo dnf install tuned-adm
+}
+
+#Hàm install warp
+install_warp() {
+  #Add repo
+  sudo curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | sudo tee /etc/yum.repos.d/cloudflare-warp.repo
+  #Install
+  sudo dnf install cloudflare-warp
+}
+
+#Hàm install Grub Customizer
+install_grub_customizer() {
+  sudo dnf install grub-customizer
+}
+
+
+
 
 updateSystem
 install_extension_manager
 install_extensions
+install_nvm
+install_nodejs
+install_rclone
+install_rclone_browser
+install_gnome_tweaks
+install_java
+install_mongodb
+install_httpd
+install_mysql
+install_ibus_bamboo
+install_cpupower
+install_perf
+install_caprine
+install_tuned
+install_fancontrol
+install_tuned_adm
+install_warp
+install_grub_customizer

@@ -71,10 +71,10 @@ sudo fwupdmgr update
 sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 sudo dnf groupupdate core
 #Install 1.1.1.1
-#Add repo
-sudo curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | sudo tee /etc/yum.repos.d/cloudflare-warp.repo
-#Install
-sudo dnf install cloudflare-warp
+  #Add repo
+  sudo curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | sudo tee /etc/yum.repos.d/cloudflare-warp.repo
+  #Install
+  sudo dnf install cloudflare-warp
 #Install Nodejs
 sudo dnf install nodejs
 
