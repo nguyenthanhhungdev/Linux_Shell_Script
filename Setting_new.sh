@@ -57,13 +57,12 @@ install_extensions() {
         "workspaces-by-open-apps@favo02.github.com"
     )
 
-    # Loop through each UUID and install the extension
+    # Loop through each UUID and print the extension
     for UUID in "${EXTENSION_UUIDS[@]}"
     do
-        gnome-extensions install "$UUID"
+        echo "Extension: $UUID"
     done
 }
-
 #Hàm install nvm
 install_nvm() {
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
@@ -217,7 +216,6 @@ install_impression() {
 
 updateSystem
 install_extension_manager
-install_extensions
 install_nvm
 install_nodejs
 install_rclone
@@ -244,3 +242,4 @@ install_graphor
 install_secret
 install_warp
 install_firmware_update
+install_extensions
