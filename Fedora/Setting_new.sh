@@ -124,12 +124,6 @@ install_perf() {
   sudo dnf install perf
 }
 
-#Hàm install caprine
-install_caprine() {
-  sudo dnf copr enable dusansimic/caprine
-  sudo dnf install caprine
-}
-
 #Hàm install tuned
 install_tuned() {
   sudo dnf install tuned
@@ -238,7 +232,6 @@ install_mysql
 install_ibus_bamboo
 install_cpupower
 install_perf
-install_caprine
 install_tuned
 install_fancontrol
 install_tuned_adm
@@ -252,9 +245,9 @@ install_graphor
 install_secret
 install_warp
 install_firmware_update
-install_extensions
 install_bottles
 install_impression
 install_iostat
 install_upower
+install_extensions
 
