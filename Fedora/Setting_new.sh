@@ -219,6 +219,11 @@ install_iostat() {
   sudo dnf install sysstat
 }
 
+#Hàm install upower
+install_upower() {
+  sudo dnf install upower
+}
+
 updateSystem
 install_extension_manager
 install_nvm
@@ -251,3 +256,5 @@ install_extensions
 install_bottles
 install_impression
 install_iostat
+install_upower
+
