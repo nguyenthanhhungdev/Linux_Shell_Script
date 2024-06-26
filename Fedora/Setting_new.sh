@@ -218,36 +218,39 @@ install_upower() {
   sudo dnf install upower
 }
 
-updateSystem
-install_extension_manager
-install_nvm
-install_nodejs
-install_rclone
-install_rclone_browser
-install_gnome_tweaks
-install_java
-install_mongodb
-install_httpd
-install_mysql
-install_ibus_bamboo
-install_cpupower
-install_perf
-install_tuned
-install_fancontrol
-install_tuned_adm
-install_warp
-install_grub_customizer
-install_jetbrains_toolbox
-install_git
-install_edge
-install_vscode
-install_graphor
-install_secret
-install_warp
-install_firmware_update
-install_bottles
-install_impression
-install_iostat
-install_upower
-install_extensions
+main() {
+  updateSystem
+  install_extension_manager
+  install_nvm
+  install_nodejs
+  install_rclone
+  install_rclone_browser
+  install_gnome_tweaks
+  install_java
+  install_mongodb
+  install_httpd
+  install_mysql
+  install_ibus_bamboo
+  install_cpupower
+  install_perf
+  install_tuned
+  install_fancontrol
+  install_tuned_adm
+  install_warp
+  install_grub_customizer
+  install_jetbrains_toolbox
+  install_git
+  install_edge
+  install_vscode
+  install_graphor
+  install_secret
+  install_warp
+  install_firmware_update
+  install_bottles
+  install_impression
+  install_iostat
+  install_upower
+  install_extensions
+}
 
+main
