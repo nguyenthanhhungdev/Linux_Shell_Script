@@ -214,6 +214,11 @@ install_impression() {
   flatpak install flathub io.gitlab.adhami3310.Impression
 }
 
+#Hàm install iostat
+install_iostat() {
+  sudo dnf install sysstat
+}
+
 updateSystem
 install_extension_manager
 install_nvm
@@ -243,3 +248,6 @@ install_secret
 install_warp
 install_firmware_update
 install_extensions
+install_bottles
+install_impression
+install_iostat
