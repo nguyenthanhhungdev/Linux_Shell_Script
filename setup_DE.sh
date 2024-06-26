@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Lấy danh sách các DE
-de_list=( $(sudo dnf grouplist -v | grep "Desktop") )
+IFS=$'\n' de_list=( $(sudo dnf grouplist -v | grep "Desktop") )
 
 # Hiển thị danh sách các DE
 echo "số thứ tự|    tên DE"
