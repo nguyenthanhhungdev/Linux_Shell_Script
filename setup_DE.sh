@@ -20,4 +20,5 @@ if [ "$index" -le 0 ] || [ "$index" -gt "${#de_list[@]}" ]; then
 fi
 
 # Cài đặt DE
-sudo dnf group install "${de_list[$((index-1))]}"
+de_name=$(echo "${de_list[$((index-1))]}" | cut -d'(' -f1)
+sudo dnf group install "$de_name"
