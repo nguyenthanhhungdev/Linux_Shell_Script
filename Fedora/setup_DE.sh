@@ -52,6 +52,8 @@ remove_de() {
   sudo systemctl disable lightdm
   sudo systemctl enable gdm
   sudo dnf remove "@$de_name_trimmed"
+  echo " Sau khi xóa thì còn các app còn lại thì thực hiện sudo list installed
+        để thực hiện xóa các app còn lại"
 }
 #Hàm Hiển thị menu chọn
 menu() {
