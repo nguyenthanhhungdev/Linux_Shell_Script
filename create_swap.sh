@@ -9,7 +9,7 @@ SWAP_SIZE=$1
 # Hàm tạo file swap
 create_swap() {
     # Tạo một file swap với kích thước được chỉ định
-    sudo fallocate -l $SWAP_SIZE /swapfile
+    sudo fallocate -l "$SWAP_SIZE" /swapfile
 
     # Đặt quyền truy cập chỉ cho root
     sudo chmod 600 /swapfile

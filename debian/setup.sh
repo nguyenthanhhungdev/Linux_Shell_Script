@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PACKAGE_LIST="debian/package.txt"
+PACKAGE_LIST="/debian/package.txt"
 
 install_packages() {
 	echo "Updating package list..."
