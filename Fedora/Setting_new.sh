@@ -218,6 +218,14 @@ install_upower() {
   sudo dnf install upower
 }
 
+#Hàm install Vitals
+install_vitals() {
+  #Install Vitals (Wacthing detail of system)
+  sudo dnf install libgtop2-devel lm_sensors
+  #https://aur.archlinux.org/gnome-shell-extension-vitals-git.git
+}
+
+
 main() {
   updateSystem
   install_extension_manager
@@ -250,6 +258,7 @@ main() {
   install_impression
   install_iostat
   install_upower
+  install_vitals
   install_extensions
 }
 
