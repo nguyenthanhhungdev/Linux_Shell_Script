@@ -60,24 +60,27 @@ menu() {
   echo "Chọn chức năng:"
   echo "1|      Xóa"
   echo "2|      Cài Đặt"
-  read user_input
-
-  # Kiểm tra xem số thứ tự có hợp lệ không
-  if ! [[ "$user_input" =~ ^[0-9]+$ ]] || [ "$user_input" -le 0 ] || [ "$user_input" -gt 2 ]; then
-    echo "Số thứ tự không hợp lệ. Thoát chương trình."
-    exit 1
-  fi
+  read -r user_input
 
   get_de_index
-  if [ "$user_input" -eq 1 ]; then
-      remove_de
-    elif [ "$user_input" -eq 2 ]; then
-      install_de
-    fi
+  case $user_input in
+  1)
+    remove_de
+    ;;
+  2)
+    install_de
+    ;;
+  *)
+    echo "Chức năng không hợp lệ"
+    ;;
+  esac
+
 }
 
 main() {
-  menu
+  while true; do
+      menu
+    done
 }
 
 main
