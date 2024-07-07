@@ -225,6 +225,37 @@ install_vitals() {
   #https://aur.archlinux.org/gnome-shell-extension-vitals-git.git
 }
 
+#Hàm install mongodb
+install_mongodb1() {
+
+# Bước 1: Thêm repo MongoDB
+sudo tee /etc/yum.repos.d/mongodb-org-7.0.repo <<EOF
+[mongodb-org-7.0]
+name=MongoDB Repository
+# Vào https://repo.mongodb.org/yum/redhat/ để xem phiên bản mới nhất
+baseurl=https://repo.mongodb.org/yum/redhat/9/mongodb-org/7.0/x86_64/
+gpgcheck=1
+enabled=1
+# https://www.mongodb.org/static/pgp/
+gpgkey=https://www.mongodb.org/static/pgp/server-7.0.asc
+EOF
+
+# Bước 2: Cài đặt MongoDB
+sudo dnf install -y mongodb-org
+
+# Bước 3: Khởi động và kích hoạt MongoDB
+sudo systemctl start mongod
+
+# Kiểm tra trạng thái của MongoDB
+sudo systemctl status mongod
+}
+
+#Hàm install mongodb
+install_mongodb2() {
+  sudo dnf install -qy mongodb-database-tools-100.9.5-1.x86_64 mongodb-mongosh-shared-openssl3 mongodb-org-6.0.16-1.el9.x86_64 mongodb-org-database-6.0.16-1.el9.x86_64 mongodb-org-database-tools-extra-6.0.16-1.el9.x86_64 mongodb-org-mongos-6.0.16-1.el9.x86_64 mongodb-org-server-6.0.16-1.el9.x86_64 mongodb-org-tools-6.0.16-1.el9.x86_64
+
+}
+
 
 main() {
   updateSystem
@@ -260,6 +291,7 @@ main() {
   install_upower
   install_vitals
   install_extensions
+  install_mongodb2
 }
 
 main
