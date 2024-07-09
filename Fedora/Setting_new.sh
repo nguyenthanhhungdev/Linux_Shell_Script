@@ -290,8 +290,7 @@ main() {
   install_iostat
   install_upower
   install_vitals
-  install_extensions
   install_mongodb2
+  install_extensions
 }
-
 main

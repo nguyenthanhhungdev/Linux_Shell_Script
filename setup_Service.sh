@@ -148,6 +148,26 @@ menu() {
       stop_service  "$(get_service_by_number "$service_number")"
       read -p "Enter to back menu"
       ;;
+    3) read -p "Enter service number: " service_number;
+      restart_service  "$(get_service_by_number "$service_number")"
+      read -p "Enter to back menu"
+      ;;
+    4) read -p "Enter service number: " service_number;
+      enable_service  "$(get_service_by_number "$service_number")"
+      read -p "Enter to back menu"
+      ;;
+    5) read -p "Enter service number: " service_number;
+      disable_service  "$(get_service_by_number "$service_number")"
+      read -p "Enter to back menu"
+      ;;
+    6) read -p "Enter service number: " service_number;
+      reload_service  "$(get_service_by_number "$service_number")"
+      read -p "Enter to back menu"
+      ;;
+    7) read -p "Enter service number: " service_number;
+      status_service  "$(get_service_by_number "$service_number")"
+      read -p "Enter to back menu"
+      ;;
     9) exit ;;
     *) echo "Invalid choice" ;;
   esac
