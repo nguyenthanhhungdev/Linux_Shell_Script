@@ -36,32 +36,15 @@ updateSystem() {
 }
 
 install_extensions() {
-    # List of extension UUIDs to install
-    EXTENSION_UUIDS=(
-        "dash-to-dock@micxgx.gmail.com"
-        "quick-settings-tweaks@qwreey"
-        "transparent-window-moving@noobsai.github.com"
-        "compiz-windows-effect@hermes83.github.com"
-        "compiz-alike-magic-lamp-effect@hermes83.github.com"
-        "Vitals@CoreCoding.com"
-        "Rounded_Corners@lennart-k"
-        "apps-menu@gnome-shell-extensions.gcampax.github.com"
-        "background-logo@fedorahosted.org"
-        "launch-new-instance@gnome-shell-extensions.gcampax.github.com"
-        "places-menu@gnome-shell-extensions.gcampax.github.com"
-        "window-list@gnome-shell-extensions.gcampax.github.com"
-        "appindicatorsupport@rgcjonas.gmail.com"
-        "user-theme@gnome-shell-extensions.gcampax.github.com"
-        "clipboard-indicator@tudmotu.com"
-        "blur-my-shell@aunetx"
-        "workspaces-by-open-apps@favo02.github.com"
-    )
+   #!/bin/bash
 
-    # Loop through each UUID and print the extension
-    for UUID in "${EXTENSION_UUIDS[@]}"
-    do
-        echo "Extension: $UUID"
-    done
+   # Đọc danh sách UUID của các GNOME extensions từ file vào một mảng
+   mapfile -t extensions < extension_list
+
+   # Lặp qua mảng và cài đặt từng extension
+   for extension in "${extensions[@]}"; do
+       gnome-extensions install "$extension"
+   done
 }
 #Hàm install nvm
 install_nvm() {
