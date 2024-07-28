@@ -31,51 +31,21 @@ get_service_by_number() {
 }
 
 search_service() {
-#  sudo systemctl list-units --type=service --state=running | grep $1
-  IFS=$'\n' service_list2=( $(sudo systemctl list-units --type=service --state=running | grep $1) )
-
-  echo "Danh sách service:"
-  for i in "${!service_list2[@]}"; do
-    echo "$((i+1))|    ${service_list2[$i]}"
-  done
-
-  echo "Nhập số thứ tự của service muốn chọn:"
-  read index2
-
-  if ! [[ "$index2" =~ ^[0-9]+$ ]] || [ "$index2" -le 0 ] || [ "$index2" -gt "${#service_list2[@]}" ]; then
-    echo "Số thứ tự không hợp lệ. Thoát chương trình."
-    exit 1
-  fi
+  search_term=$1
+  IFS=$'\n' service_list2=( $(systemctl list-units --type=service --all | grep "$search_term") )
 
   if [ ${#service_list2[@]} -eq 0 ] ; then
     echo "Không tìm thấy service"
-    exit 1
+  else
+    echo "Danh sách service:"
+    for i in "${!service_list2[@]}"; do
+      echo "$((i+1))|    ${service_list2[$i]}"
+    done
   fi
 
-  service_name=$(echo "${service_list2[$((index2-1))]}" | awk '{print $1}')
-  echo "Service name: $service_name"
-
-  echo "1. Get all service"
-  echo "2. Start service"
-  echo "3. Stop service"
-  echo "4. Restart service"
-  echo "5. Enable service"
-  echo "6. Disable service"
-  echo "7. Reload service"
-  echo "8. Status service"
-  echo "9. Exit"
-  read -p -r "Enter your choice: " choice
-  case $choice in
-    1) start_service "$service_name" ;;
-    2) stop_service "$service_name" ;;
-    3) restart_service "$service_name" ;;
-    4) enable_service "$service_name" ;;
-    5) disable_service "$service_name" ;;
-    6) reload_service "$service_name" ;;
-    7) status_service "$service_name" ;;
-    8) exit ;;
-    *) echo "Invalid choice" ;;
-  esac
+  check_command_success
+#  service_name=$(echo "${service_list2[$((index2-1))]}" | awk '{print $1}')
+#  echo "Service name: $service_name"
 }
 
 # Hàm kiểm tra một câu lệnh có thực thi thành công hay không
@@ -85,11 +55,15 @@ check_command_success() {
   else
     echo "Command execution failed."
   fi
+  read -p "Enter to back menu"
 }
 
 # Hàm start service
 start_service() {
   sudo systemctl start "$1"
+
+#  read -p "Enter to back menu"
+  check_command_success
 }
 
 # Hàm stop service
@@ -105,21 +79,29 @@ stop_service() {
 # Hàm restart service
 restart_service() {
   sudo systemctl restart "$1"
+
+  check_command_success
 }
 
 # Hàm enable service
 enable_service() {
   sudo systemctl enable "$1"
+
+  check_command_success
 }
 
 # Hàm disable service
 disable_service() {
   sudo systemctl disable "$1"
+
+  check_command_success
 }
 
 # Hàm reload service
 reload_service() {
   sudo systemctl reload "$1"
+
+  check_command_success
 }
 
 # Hàm status service
@@ -128,9 +110,9 @@ status_service() {
 }
 
 menu() {
+  echo "=========================================="
   echo "Danh sách service:"
   get_all_service
-
   echo "Chọn chức năng:"
   echo "1. Start service"
   echo "2. Stop service"
@@ -146,27 +128,24 @@ menu() {
     1) read -p "Enter service name: " service_name; start_service  "$service_name";;
     2) read -p "Enter service number: " service_number;
       stop_service  "$(get_service_by_number "$service_number")"
-      read -p "Enter to back menu"
       ;;
     3) read -p "Enter service number: " service_number;
       restart_service  "$(get_service_by_number "$service_number")"
-      read -p "Enter to back menu"
       ;;
     4) read -p "Enter service number: " service_number;
       enable_service  "$(get_service_by_number "$service_number")"
-      read -p "Enter to back menu"
       ;;
     5) read -p "Enter service number: " service_number;
       disable_service  "$(get_service_by_number "$service_number")"
-      read -p "Enter to back menu"
       ;;
     6) read -p "Enter service number: " service_number;
       reload_service  "$(get_service_by_number "$service_number")"
-      read -p "Enter to back menu"
       ;;
     7) read -p "Enter service number: " service_number;
       status_service  "$(get_service_by_number "$service_number")"
-      read -p "Enter to back menu"
+      ;;
+    8) read -p "Enter search term: " search_term;
+      search_service "$search_term"
       ;;
     9) exit ;;
     *) echo "Invalid choice" ;;
