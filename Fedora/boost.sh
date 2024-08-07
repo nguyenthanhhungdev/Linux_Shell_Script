@@ -27,7 +27,7 @@ function set_performance_governor() {
 # Hàm thiết lập tần suất CPU
 function set_cpu_frequency() {
   echo "Thiết lập tần suất CPU tối thiểu 4300 MHz"
-  sudo cpupower frequency-set -d 4300 all
+  sudo cpupower frequency-set -d 4400 all
 }
 
 # Hàm hiển thị thông tin tần suất CPU
@@ -78,4 +78,4 @@ confirm_tuned_active
 
 # Khởi động và chạy fancontrol (tùy chọn)
 start_fancontrol
-#run_fancontrol
+run_fancontrol

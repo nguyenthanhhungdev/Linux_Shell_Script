@@ -239,6 +239,16 @@ install_mongodb2() {
 
 }
 
+# Hàm install conky
+install_conky() {
+  sudo dnf install conky
+}
+
+# Hàm install Obsidian
+install_obsidian() {
+  flatpak install flathub md.obsidian.Obsidian
+}
+
 
 main() {
   updateSystem
@@ -275,5 +285,7 @@ main() {
   install_vitals
   install_mongodb2
   install_extensions
+  install_conky
+  install_obsidian
 }
 main
