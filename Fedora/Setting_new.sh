@@ -36,8 +36,6 @@ updateSystem() {
 }
 
 install_extensions() {
-   #!/bin/bash
-
    # Đọc danh sách UUID của các GNOME extensions từ file vào một mảng
    mapfile -t extensions < extension_list
 
@@ -247,6 +245,12 @@ install_conky() {
 # Hàm install Obsidian
 install_obsidian() {
   flatpak install flathub md.obsidian.Obsidian
+}
+
+# Hàm install Cyclictest
+install_cyclictest() {
+  sudo dnf install rt-tests
+  sudo dnf install cyclictest
 }
 
 
