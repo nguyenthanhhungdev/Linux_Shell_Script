@@ -66,6 +66,25 @@ function run_fancontrol() {
   sudo fancontrol
 }
 
+#Hàm thiết lập tần suất CPU
+function set_cpu_frequency_ryzenadj() {
+  echo "Thiết lập công suất CPU"
+  if ! command -v ryzenadj >/dev/null; then
+    echo "Lỗi: ryzenadj chưa được cài đặt. Vui lòng cài đặt ryzenadj trước khi sử dụng script này."
+    sudo dnf install cmake gcc-c++ pciutils-devel
+    git clone https://github.com/FlyGoat/RyzenAdj.git
+    cd RyzenAdj
+    rm -r win32
+    mkdir build && cd build
+    cmake -DCMAKE_BUILD_TYPE=Release ..
+    make
+    if [ -d ~/.local/bin ]; then ln -s ryzenadj ~/.local/bin/ryzenadj && echo "symlinked to ~/.local/bin/ryzenadj"; fi
+    if [ -d ~/.bin ]; then ln -s ryzenadj ~/.bin/ryzenadj && echo "symlinked to ~/.bin/ryzenadj"; fi
+  fi
+  sudo ./ryzenadj -i
+  sudo ./ryzenadj --stapm-limit=35000 --fast-limit=35000 --slow-limit=35000 --tctl-temp=90
+}
+
 # Gọi các hàm
 check_tuned_installed
 print_system_info
