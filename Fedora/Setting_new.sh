@@ -303,6 +303,5 @@ main() {
   install_cyclictest
   install_volume_control
   install_kitty_terminal
-
 }
 main

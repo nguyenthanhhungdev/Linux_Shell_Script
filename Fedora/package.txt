@@ -14,3 +14,4 @@ dash2dock-lite@icedman.github.com
 openbar@neuromorph
 vertical-workspaces@G-dH.github.com
 happy-appy-hotkey@jqno.nl
+blur-my-shell@aunetx
