@@ -253,6 +253,15 @@ install_cyclictest() {
   sudo dnf install cyclictest
 }
 
+# Hàm install volume control
+install_volume_control() {
+  flatpak install flathub org.pulseaudio.pavucontrol
+}
+
+# Hàm install kitty terminal
+install_kitty_terminal() {
+  curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+}
 
 main() {
   updateSystem
@@ -291,5 +300,9 @@ main() {
   install_extensions
   install_conky
   install_obsidian
+  install_cyclictest
+  install_volume_control
+  install_kitty_terminal
+
 }
 main
