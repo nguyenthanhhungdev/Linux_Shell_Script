@@ -45,7 +45,7 @@ function enable_and_start_tuned() {
 # Hàm áp dụng cấu hình tuned cho các profile
 function apply_tuned_profiles() {
   echo "Áp dụng cấu hình tuned cho các profile"
-  tuned-adm profile throughput-performance virtual-host network-throughput hpc-compute throughput-performance
+  tuned-adm profile throughput-performance hpc-compute
 }
 
 # Hàm xác nhận cấu hình tuned đang hoạt động
