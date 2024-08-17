@@ -98,8 +98,8 @@ install_mysql() {
 
 #Hàm install ibus-bamboo
 install_ibus_bamboo() {
-  dnf config-manager --add-repo https://download.opensuse.org/repositories/home:lamlng/Fedora_39/home:lamlng.repo
-  dnf install ibus-bamboo
+  sudo dnf config-manager --add-repo https://download.opensuse.org/repositories/home:lamlng/Fedora_39/home:lamlng.repo
+  sudo dnf install ibus-bamboo
 }
 
 #Hàm install cpupower
@@ -157,10 +157,6 @@ install_git() {
   sudo dnf install git
 }
 
-#Hàm install edge
-install_edge() {
-  flatpak install flathub com.microsoft.Edge
-}
 
 #Hàm install vscode
 install_vscode() {
