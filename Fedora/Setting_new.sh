@@ -34,16 +34,23 @@ updateSystem() {
   sudo fwupdmgr get-updates
   sudo fwupdmgr update
 }
-
 install_extensions() {
    # Đọc danh sách UUID của các GNOME extensions từ file vào một mảng
-   mapfile -t extensions < extension_list
+   mapfile -t extensions < package.txt
 
-   # Lặp qua mảng và cài đặt từng extension
-   for extension in "${extensions[@]}"; do
-       gnome-extensions install "$extension"
-   done
+   for i in "${extensions[@]}"
+do
+    VERSION_TAG=$(curl -Lfs "https://extensions.gnome.org/extension-query/?search=${i}" | jq '.extensions[0] | .shell_version_map | map(.pk) | max')
+    wget -O ${i}.zip "https://extensions.gnome.org/download-extension/${i}.shell-extension.zip?version_tag=$VERSION_TAG"
+    gnome-extensions install --force ${EXTENSION_ID}.zip
+    if ! gnome-extensions list | grep --quiet ${i}; then
+        busctl --user call org.gnome.Shell.Extensions /org/gnome/Shell/Extensions org.gnome.Shell.Extensions InstallRemoteExtension s ${i}
+    fi
+    gnome-extensions enable ${i}
+    rm ${i}.zip
+done
 }
+
 #Hàm install nvm
 install_nvm() {
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
