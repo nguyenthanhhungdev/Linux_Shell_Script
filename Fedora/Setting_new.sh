@@ -118,8 +118,9 @@ install_tuned() {
 }
 
 #Hàm install fancontrol
-install_fancontrol() {
-  sudo dnf install fancontrol
+config_boostFan() {
+  sudo dnf install lm_sensors
+  sudo pwmconfig
 }
 
 #Hàm install tuned-adm
@@ -270,6 +271,15 @@ install_kitty_terminal() {
   curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 }
 
+# Hàm install snapd
+install_snapd() {
+  sudo dnf install snapd
+}
+
+# Hàm install ttyplot
+install_ttyplot() {
+  sudo snap install ttyplot
+}
 main() {
   updateSystem
   install_extension_manager
@@ -286,7 +296,7 @@ main() {
   install_cpupower
   install_perf
   install_tuned
-  install_fancontrol
+  config_boostFan
   install_tuned_adm
   install_warp
   install_grub_customizer
