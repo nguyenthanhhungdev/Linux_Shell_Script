@@ -81,11 +81,6 @@ install_java() {
   sudo dnf install java
 }
 
-#Hàm install mongodb
-install_mongodb() {
-  sudo dnf install mongodb-org
-}
-
 #Hàm install httpd
 install_httpd() {
   sudo dnf install httpd
@@ -235,12 +230,6 @@ sudo systemctl start mongod
 sudo systemctl status mongod
 }
 
-#Hàm install mongodb
-install_mongodb2() {
-  sudo dnf install -qy mongodb-database-tools-100.9.5-1.x86_64 mongodb-mongosh-shared-openssl3 mongodb-org-6.0.16-1.el9.x86_64 mongodb-org-database-6.0.16-1.el9.x86_64 mongodb-org-database-tools-extra-6.0.16-1.el9.x86_64 mongodb-org-mongos-6.0.16-1.el9.x86_64 mongodb-org-server-6.0.16-1.el9.x86_64 mongodb-org-tools-6.0.16-1.el9.x86_64
-
-}
-
 # Hàm install conky
 install_conky() {
   sudo dnf install conky
@@ -276,6 +265,17 @@ install_snapd() {
 install_ttyplot() {
   sudo snap install ttyplot
 }
+
+# Hàm install vivaldi
+install_vivaldi() {
+  flatpak install flathub com.vivaldi.Vivaldi
+}
+
+# Hàm install localsend
+install_localsend() {
+  flatpak install flathub org.localsend.localsend_app
+}
+
 main() {
   updateSystem
   install_extension_manager
@@ -285,7 +285,7 @@ main() {
   install_rclone_browser
   install_gnome_tweaks
   install_java
-  install_mongodb
+  install_mongodb1
   install_httpd
   install_mysql
   install_ibus_bamboo
@@ -309,12 +309,15 @@ main() {
   install_iostat
   install_upower
   install_vitals
-  install_mongodb2
   install_extensions
   install_conky
   install_obsidian
   install_cyclictest
   install_volume_control
   install_kitty_terminal
+  install_snapd
+  install_ttyplot
+  install_vivaldi
+
 }
 main
