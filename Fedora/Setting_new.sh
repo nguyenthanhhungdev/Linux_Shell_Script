@@ -129,6 +129,16 @@ install_warp() {
   sudo curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | sudo tee /etc/yum.repos.d/cloudflare-warp.repo
   #Install
   sudo dnf install cloudflare-warp
+
+  # Register the client first
+  warp-cli register # Agree to the privacy document
+
+  # Enable the client
+  git clone https://github.com/mrmoein/warp-cloudflare-gui
+  cd warp-cloudflare-gui
+  # Install the program
+  python3 install.py
+  sudo chmod +x ~/.local/share/applications/warp-gui.desktop
 }
 
 #Hàm install Grub Customizer
