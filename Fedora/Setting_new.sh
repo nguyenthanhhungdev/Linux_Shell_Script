@@ -286,6 +286,14 @@ install_localsend() {
   flatpak install flathub org.localsend.localsend_app
 }
 
+# Hàm install clamAV
+install_clamAV() {
+  sudo dnf install clamav clamav-update clamtk
+  sudo freshclamv
+#  Cứ 5 ngày cập nhật 1 lần
+  */5 * * * * sudo freshclam >/dev/null 2>&1
+}
+
 main() {
   updateSystem
   install_extension_manager
@@ -328,6 +336,7 @@ main() {
   install_snapd
   install_ttyplot
   install_vivaldi
+  install_localsend
 
 }
 main
