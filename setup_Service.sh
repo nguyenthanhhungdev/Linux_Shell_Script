@@ -32,7 +32,7 @@ get_service_by_number() {
 
 search_service() {
   search_term=$1
-  IFS=$'\n' service_list2=( $(systemctl list-units --type=service --all | grep "$search_term") )
+  IFS=$'\n' service_list2=( $(systemctl list-units --type=service --all | grep -i "$search_term") )
 
   if [ ${#service_list2[@]} -eq 0 ] ; then
     echo "Không tìm thấy service"

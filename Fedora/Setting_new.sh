@@ -294,6 +294,11 @@ install_clamAV() {
   */5 * * * * sudo freshclam >/dev/null 2>&1
 }
 
+# Hàm install Amberol
+install_amberol() {
+  flatpak install flathub io.bassi.Amberol
+}
+
 main() {
   updateSystem
   install_extension_manager
@@ -337,6 +342,7 @@ main() {
   install_ttyplot
   install_vivaldi
   install_localsend
-
+  install_clamAV
+  install_amberol
 }
 main

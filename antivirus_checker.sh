@@ -5,10 +5,18 @@ sudo freshclam
 function scan_directory() {
   local directory=$1
   if [ -d "$directory" ]; then
-    clamscan -r --infected --no-summary "$directory" | while read -r line; do
+    local total_files=$(find "$directory" -type f | wc -l)
+    local scanned_files=0
+
+    clamscan -r --infected --no-summary "$directory" | pv -l -s $total_files | while read -r line; do
+      scanned_files=$((scanned_files + 1))
       file=$(echo "$line" | awk '{print $2}')
       echo "Virus detected in file: $file"
     done
+
+    if [ $scanned_files -eq 0 ]; then
+      echo "All safe"
+    fi
   else
     echo "Directory does not exist."
   fi
